@@ -44,7 +44,7 @@ Pool-request aceptada. Para ello, edita el campo `homepage` del archivo
 propios, y envía los cambios a GitHub.
 
 ```json
-"homepage": "https://your_username.github.io/your_repo_name/"
+"homepage": "https://marrakeshn.github.io/react-tweets/"
 ```
 
 A continuación, ve a la configuración del repositorio de GitHub (`Settings` >

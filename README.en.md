@@ -43,7 +43,7 @@ replacing `your_username` and `your_repo_name` with your own, and submit the
 changes to GitHub.
 
 ```json
-"homepage": "https://your_username.github.io/your_repo_name/"
+"homepage": "https://marrakeshn.github.io/react-tweets/"
 ```
 
 Next, you need to go to the settings of the GitHub repository (`Settings` >
