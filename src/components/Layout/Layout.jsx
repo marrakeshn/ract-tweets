@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
+import logoMain from '../../images/favicon.ico';
 
 import { Header, Nav, StyledLink, LoaderContainer } from './Layout.styled';
 
@@ -12,6 +13,7 @@ const Layout = () => {
           <StyledLink to="/">Home</StyledLink>
           <StyledLink to="/tweets">Tweets</StyledLink>
         </Nav>
+        <img src={logoMain} alt="tweetApp logo"/>
       </Header>
       <Suspense
         fallback={

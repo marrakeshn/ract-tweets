@@ -13,7 +13,7 @@ import { fetchUsers } from '../../redux/users/operations';
 const Tweets = () => {
   const [setUsers] = useState([]);
   const [showButton, setShowButton] = useState(false);
-  const [twoElRender, setTwoElRender] = useState(2);
+  const [threeElRender, setThreeElRender] = useState(3);
   const location = useLocation();
 
   const pathToBack = useRef(location.state?.from ?? '/');
@@ -26,7 +26,7 @@ const Tweets = () => {
           Notify.error('Oops, something went wrong.');
           return;
         }
-        const twoEl = users.slice(0, twoElRender);
+        const twoEl = users.slice(0, threeElRender);
         const filteredData = twoEl.map(
           ({ id, user, tweets, followers, avatar }) => ({
             id,
@@ -43,7 +43,7 @@ const Tweets = () => {
 
         setUsers(filteredData);
 
-        if (twoElRender !== users.length) {
+        if (threeElRender !== users.length) {
           setShowButton(true);
         } else {
           setShowButton(false);
@@ -54,11 +54,11 @@ const Tweets = () => {
     } catch (e) {
       Notify.error('Oops, something went wrong.');
     }
-  }, [twoElRender]);
+  }, [threeElRender]);
 
   const counterForData = () => {
-    setTwoElRender(prevState => prevState + 2);
-    console.log(twoElRender);
+    setThreeElRender(prevState => prevState + 3);
+    console.log(threeElRender);
   };
 
   return (
