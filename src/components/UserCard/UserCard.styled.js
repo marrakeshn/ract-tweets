@@ -2,11 +2,8 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.li`
   position: relative;
-  width: 380px;
   min-width: 380px;
   height: 464px;
-  margin-bottom: 36px;
-
   background: linear-gradient(
     114.99deg,
     #471ca9 -0.99%,
@@ -14,7 +11,6 @@ export const Wrapper = styled.li`
     #4b2a99 78.99%
   );
   border-radius: 20px;
-
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
@@ -35,7 +31,6 @@ export const Logo = styled.img`
   position: absolute;
   top: 20;
   left: 20;
-  transform: translateY(-50%);
 `;
 
 export const Line = styled.div`
@@ -44,9 +39,7 @@ export const Line = styled.div`
   height: 8px;
   left: 0px;
   top: 226px;
-
   overflow: hidden;
-
   background: #ebd8ff;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
     inset 0px -1.71846px 3.43693px #ae7be3, inset 0px 3.43693px 2.5777px #fbf8ff;
@@ -61,7 +54,6 @@ export const AvatarContainer = styled.div`
   border-radius: 50%;
   background: rgb(87 54 163);
 `;
-
 export const Circle = styled.img`
   position: absolute;
   top: -6px;
@@ -83,16 +75,13 @@ export const UserItem = styled.li`
     margin-bottom: 8px;
   }
 `;
-
 export const UserList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   margin-bottom: 26px;
 `;
-
 export const Button = styled.button`
   width: 196px;
   height: 50px;
@@ -101,14 +90,36 @@ export const Button = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
   text-transform: uppercase;
   color: #373737;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
 
   &:hover {
-    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+    border: 2px solid #5cd3a8;
   }
 `;
+
+export const ButtonFollowed = styled.button`
+  width: 196px;
+  height: 50px;
+  margin: 0 auto;
+  background: #5cd3a8;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #373737;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    border: 2px solid #ebd8ff;
+  }
+`;
+
+

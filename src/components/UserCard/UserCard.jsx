@@ -13,18 +13,28 @@ import {
   ImageContainer,
   UserList,
   UserItem,
-  Button } from './UserCard.styled';
+  Button, ButtonFollowed } from './UserCard.styled';
 
 
 function UserCard({ avatar, user, tweets, followers }) {
   const [isFollowed, setIsFollowed] = useState(false);
+
+  const handleFollowBtn = () => {
+    setIsFollowed(!isFollowed);
+  };
+
+  useEffect(() => {}, [isFollowed]);
+
+
+  let formatter = Intl.NumberFormat('en-US')
+  let formatted = formatter.format(followers);
 
 
   return (
     <Wrapper>
       <UserCardStyled>
         <ImageContainer>
-          <Logo src={logo} alt="logo" width="76" height="20"></Logo>
+          <a href={"https://goit.global/ph/"} target="_blank" rel="noreferrer"><Logo src={logo} alt="logo" width="76" height="20" href={"https://goit.global/ph/"}></Logo></a>
           <img src={picture} alt="background" width="308" height="168"></img>
         </ImageContainer>
         <Line></Line>
@@ -37,18 +47,18 @@ function UserCard({ avatar, user, tweets, followers }) {
             <p>{tweets} tweets</p>
           </UserItem>
           <UserItem>
-            {/*<p>{isFollowed ? followers + 1 : followers} Followers</p>*/}
-            <p>{followers} followers</p>
+            <p>{isFollowed ? followers + 1 : formatted} followers</p>
+            {/*<p>{followers} followers</p>*/}
           </UserItem>
         </UserList>
-        {/*{isFollowing ? (*/}
-        {/*  <ButtonFollowing onClick={handleFollowBtn}>Following</ButtonFollowing>*/}
-        {/*) : (*/}
-        {/*  <Button type="button" onClick={handleFollowBtn}>*/}
-        {/*    Follow*/}
-        {/*  </Button>*/}
-        {/*)}*/}
-        <Button onClick={() => setIsFollowed(!isFollowed)}>{isFollowed ? 'Following' : 'Follow'}</Button>
+        {isFollowed ? (
+          <ButtonFollowed onClick={handleFollowBtn}>Following</ButtonFollowed>
+        ) : (
+          <Button type="button" onClick={handleFollowBtn}>
+            Follow
+          </Button>
+        )}
+        {/*<Button onClick={() => setIsFollowed(!isFollowed)}>{isFollowed ? 'Following' : 'Follow'}</Button>*/}
       </UserCardStyled>
     </Wrapper>
 
