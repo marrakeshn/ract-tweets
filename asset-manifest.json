@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ract-tweets/static/css/main.c13df2e4.css",
-    "main.js": "/ract-tweets/static/js/main.47666b01.js",
+    "main.js": "/ract-tweets/static/js/main.2d125fd0.js",
     "static/js/372.a717a96e.chunk.js": "/ract-tweets/static/js/372.a717a96e.chunk.js",
     "static/js/399.15716599.chunk.js": "/ract-tweets/static/js/399.15716599.chunk.js",
     "static/js/911.94d130ee.chunk.js": "/ract-tweets/static/js/911.94d130ee.chunk.js",
@@ -15,7 +15,7 @@
     "static/media/favicon.ico": "/ract-tweets/static/media/favicon.4e46eef6575d87e94e22.ico",
     "index.html": "/ract-tweets/index.html",
     "main.c13df2e4.css.map": "/ract-tweets/static/css/main.c13df2e4.css.map",
-    "main.47666b01.js.map": "/ract-tweets/static/js/main.47666b01.js.map",
+    "main.2d125fd0.js.map": "/ract-tweets/static/js/main.2d125fd0.js.map",
     "372.a717a96e.chunk.js.map": "/ract-tweets/static/js/372.a717a96e.chunk.js.map",
     "399.15716599.chunk.js.map": "/ract-tweets/static/js/399.15716599.chunk.js.map",
     "911.94d130ee.chunk.js.map": "/ract-tweets/static/js/911.94d130ee.chunk.js.map",
@@ -25,6 +25,6 @@
   },
   "entrypoints": [
     "static/css/main.c13df2e4.css",
-    "static/js/main.47666b01.js"
+    "static/js/main.2d125fd0.js"
   ]
 }
