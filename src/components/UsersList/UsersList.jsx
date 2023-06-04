@@ -15,8 +15,6 @@ export const UsersList = () => {
     dispatch(fetchUsers({ page: page + 1 }));
   };
 
-  console.log(users);
-
   return (
     <div>
       <div>
