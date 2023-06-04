@@ -1,7 +1,6 @@
 import UserCard from '../UserCard/UserCard';
 import UserFilter from '../UserFilter/UserFilter';
-import { List, LoadMore } from './UserList.styled';
-import { useEffect } from 'react';
+import { List, LoadMore, Users, LoadNotif } from './UserList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../../redux/users/operations';
 import { selectIsFullyLoaded, selectUsers } from '../../redux/users/selectors';
@@ -12,14 +11,11 @@ export const UsersList = () => {
   const users = useSelector(selectUsers);
   const isFullyLoaded = useSelector(selectIsFullyLoaded);
 
-  useEffect(() => {
-    dispatch(fetchUsers({ page }))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const handleLoadMore = () => {
     dispatch(fetchUsers({ page: page + 1 }))
   };
+
+  console.log(users);
 
   return (
     <div>
@@ -30,12 +26,14 @@ export const UsersList = () => {
         <List>
           {!!users.length && users.map((user) => <UserCard key={user.id} {...user} />)}
         </List>
-        {isFullyLoaded && <h3 style={{ color: 'red' }}>
+        <Users>
+        {isFullyLoaded && <LoadNotif>
           All users is loaded
-        </h3>}
+        </LoadNotif>}
         <LoadMore disabled={isFullyLoaded} onClick={handleLoadMore}>
           Load More
         </LoadMore>
+        </Users>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const BackLink = styled(Link)`
   position: fixed;
   top: 126px;
-  left: 1360px;
+  right: 20px;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -31,7 +31,7 @@ export const BackLink = styled(Link)`
 
 export const TweetsContainer = styled.div`
   position: relative;
-  padding: 0 86px 72px 86px;
+  padding: 0 35px 72px 35px;
 `;
 
 

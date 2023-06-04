@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Content, Dropbtn, Dropdown, DropdownContent } from './UserFilter.styled';
 import { fetchFilteredUsers } from '../../redux/users/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const FILTER_MAP = {
   All: undefined,
@@ -9,20 +9,29 @@ const FILTER_MAP = {
   Unfollowed: false,
 };
 
+const getFilterLabel = (filterValue) => {
+  if (filterValue === true) {
+    return 'Followed'
+  } else if (filterValue === false) {
+    return 'Unfollowed'
+  }
+
+  return 'All'
+}
+
 const UserFilter = () => {
   const dispatch = useDispatch();
   const [isOpened, setIsOpened] = useState(false);
-  const [filterLabel, setFilterLabel] = useState('All');
+  const isFollowedFilterValue = useSelector((state) => state.users.isFollowedFilter)
 
   const handleFilterChange = (filterValue) => {
     dispatch(fetchFilteredUsers({ page: 1, isFollowed: FILTER_MAP[filterValue] }));
     setIsOpened(false);
-    setFilterLabel(filterValue);
   };
 
   return (
     <Dropdown>
-      <Dropbtn onClick={() => setIsOpened(!isOpened)}>Filter by {filterLabel}</Dropbtn>
+      <Dropbtn onClick={() => setIsOpened(!isOpened)}>Filter by {getFilterLabel(isFollowedFilterValue)}</Dropbtn>
       {isOpened && <DropdownContent>
         <Content onClick={() => handleFilterChange('All')}>All</Content>
         <Content onClick={() => handleFilterChange('Followed')}>Followed</Content>

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 export const Dropbtn = styled.button`
-  background: linear-gradient(114.99deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%);
+  font-family: Montserrat,sans-serif;
+  text-decoration: none;
+  font-weight: 200;
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   color: #ebd8ff;
   padding: 16px;
@@ -8,6 +10,19 @@ export const Dropbtn = styled.button`
   border: none;
   cursor: pointer;
   min-width: 160px;
+  background: linear-gradient(
+    114.99deg,
+      #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+
+
+  &:hover {
+    color: #ffc318;
+  }
+
+
 `
 export const Dropdown = styled.div`
   position: relative;
@@ -28,10 +43,14 @@ export const DropdownContent = styled.div`
 `;
 
 export const Content = styled.a`
+  cursor: pointer;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  font-family: Montserrat,sans-serif;
+  font-size: 16px;
+  font-weight: 200;
 
   &:hover {
     background-color: #5cd3a8;

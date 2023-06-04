@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.li`
   position: relative;
-  min-width: 380px;
   height: 464px;
   background: linear-gradient(
     114.99deg,
@@ -29,8 +28,8 @@ export const ImageContainer = styled.div`
 `;
 export const Logo = styled.img`
   position: absolute;
-  top: 20;
-  left: 20;
+  top: 20px;
+  left: 20px;
 `;
 
 export const Line = styled.div`
