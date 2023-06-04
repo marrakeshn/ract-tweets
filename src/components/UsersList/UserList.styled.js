@@ -18,4 +18,8 @@ export const LoadMore = styled.button`
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
   color: #ebd8ff;
+
+  &:disabled {
+    background: gray;
+  }
 `;

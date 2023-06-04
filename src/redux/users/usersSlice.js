@@ -1,16 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUsers, updateUser } from './operations';
+import { fetchFilteredUsers, fetchUsers, LIMIT, updateUser } from './operations';
 
 export const usersSlice = createSlice({
   name: 'contacts',
-  initialState: { items: [], isLoading: false, error: null, followedUsersId: [] },
-  reducers: {
-    setFollowedUser: (state, action) => {
-      const followedIndex = state.followedUsersId.indexOf(action.payload);
-      const newFollowedIds = followedIndex !== -1 ? [...state.followedUsersId].splice(followedIndex, 1) : [...state.followedUsersId, action.payload]
-      state.followedUsersId = newFollowedIds;
-    },
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+    isFullyLoaded: false,
+    isFollowedFilter: undefined,
+    page: 1,
   },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchUsers.pending, state => {
@@ -19,13 +20,23 @@ export const usersSlice = createSlice({
       .addCase(fetchUsers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.isFullyLoaded = action.payload.items.length < LIMIT;
+        state.items = [...state.items, ...action.payload.items];
+        state.page = action.payload.page;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(updateUser.pending, () => {
+      .addCase(fetchFilteredUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchFilteredUsers.fulfilled, (state, action) => {
+        state.isFollowedFilter = action.payload.isFollowed;
+        state.page = action.payload.page;
+        state.isFullyLoaded = false;
+        state.items = action.payload.items;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -38,6 +49,6 @@ export const usersSlice = createSlice({
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
+      });
   },
 });

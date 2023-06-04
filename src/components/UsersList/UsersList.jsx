@@ -1,68 +1,40 @@
 import UserCard from '../UserCard/UserCard';
 import UserFilter from '../UserFilter/UserFilter';
 import { List, LoadMore } from './UserList.styled';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../../redux/users/operations';
-import { selectUsers } from '../../redux/users/selectors';
-
+import { selectIsFullyLoaded, selectUsers } from '../../redux/users/selectors';
 
 export const UsersList = () => {
   const dispatch = useDispatch();
-  const usersPerPage = 3;
-  const FILTER_VALUES = {
-    FOLLOW: 'Follow',
-    FOLLOWINGS: 'Followings',
-  };
-  const [displayedUsers, setDisplayedUsers] = useState([]);
-  const [filter, setFilter] = useState('All');
+  const page = useSelector((state) => state.users.page)
   const users = useSelector(selectUsers);
+  const isFullyLoaded = useSelector(selectIsFullyLoaded);
+
   useEffect(() => {
-    dispatch(fetchUsers())
+    dispatch(fetchUsers({ page }))
   }, []);
 
-  useEffect(() => {
-    filterUsers();
-  }, [filter]);
-
-  const filterUsers = () => {
-    let filteredUsers = users;
-
-    if (filter === FILTER_VALUES.FOLLOW) {
-      filteredUsers = users.filter((user) => !Object.keys(localStorage).includes(user.id));
-    } else if (filter === FILTER_VALUES.FOLLOWINGS) {
-      filteredUsers = users.filter((user) => Object.keys(localStorage).includes(user.id));
-    }
-
-    setDisplayedUsers(filteredUsers);
-  };
-
   const handleLoadMore = () => {
-    const currentIndex = displayedUsers.length;
-    const newDisplayedUsers = users.slice(0, currentIndex + usersPerPage);
-    setDisplayedUsers(newDisplayedUsers);
-  };
-
-
-  const handleFilterChange = ({ target }) => {
-    target.parentNode.previousSibling.textContent = target.textContent;
-    setFilter(target.textContent);
+    dispatch(fetchUsers({ page: page + 1 }))
   };
 
   return (
     <div>
       <div>
-        <UserFilter onChange={handleFilterChange} />
+        <UserFilter />
       </div>
       <div>
         <List>
           {!!users.length && users.map((user) => <UserCard key={user.id} {...user} />)}
         </List>
-        {users.length < users.length && (
-          <LoadMore onClick={handleLoadMore}>
-            Load More
-          </LoadMore>
-        )}
+        {isFullyLoaded && <h3 style={{ color: 'red' }}>
+          All users is loaded
+        </h3>}
+        <LoadMore disabled={isFullyLoaded} onClick={handleLoadMore}>
+          Load More
+        </LoadMore>
       </div>
     </div>
   );

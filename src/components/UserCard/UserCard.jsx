@@ -16,30 +16,31 @@ import {
   UserList,
   Wrapper,
 } from './UserCard.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateUser } from '../../redux/users/operations';
-import { usersSlice } from '../../redux/users/usersSlice';
-import { selectIsFollowed } from '../../redux/users/selectors';
 
 const formatNumber = (number) => Intl.NumberFormat('en-US').format(number);
 
-function UserCard({ avatar, user, tweets, followers, id }) {
+function UserCard({ avatar, user, tweets, followers, id, isFollowed }) {
   const dispatch = useDispatch();
-  const isFollowed = useSelector((state) => selectIsFollowed(state, id));
 
   const handleFollowClick = () => {
-    dispatch(updateUser({ id, followers: isFollowed ? followers - 1 : followers + 1 }));
-    dispatch(usersSlice.actions.setFollowedUser(id));
+    dispatch(updateUser({ id, followers: isFollowed ? followers - 1 : followers + 1, isFollowed: !isFollowed }));
   };
-
 
   return (
     <Wrapper>
       <UserCardStyled>
         <ImageContainer>
-          <a href={'https://goit.global/ph/'} target='_blank' rel='noreferrer'><Logo src={logo} alt='logo' width='76'
-                                                                                     height='20'
-                                                                                     href={'https://goit.global/ph/'}></Logo></a>
+          <a href={'https://goit.global/ph/'} target='_blank' rel='noreferrer'>
+            <Logo
+              src={logo}
+              alt='logo'
+              width='76'
+              height='20'
+              href={'https://goit.global/ph/'}
+            />
+          </a>
           <img src={picture} alt='background' width='308' height='168'></img>
         </ImageContainer>
         <Line></Line>

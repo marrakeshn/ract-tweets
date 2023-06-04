@@ -9,9 +9,9 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <React.StrictMode>
-      <BrowserRouter basename="/react-tweets">
+      <BrowserRouter basename='/react-tweets'>
         <App />
       </BrowserRouter>
     </React.StrictMode>
-  </Provider>
+  </Provider>,
 );

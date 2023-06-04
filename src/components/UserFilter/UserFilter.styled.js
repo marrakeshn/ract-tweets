@@ -12,7 +12,7 @@ export const Dropbtn = styled.button`
 export const Dropdown = styled.div`
   position: relative;
   display: inline-block;
-  margin-bottom: 150px;
+  margin-bottom: 60px;
 
   &:hover .DropdownContent {
     display: block;
@@ -20,7 +20,6 @@ export const Dropdown = styled.div`
 `;
 
 export const DropdownContent = styled.div`
-  display: none;
   position: absolute;
   background-color: #ebd8ff;
   min-width: 160px;
