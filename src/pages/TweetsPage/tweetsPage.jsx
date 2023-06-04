@@ -2,10 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { useRef } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { UsersList } from '../../components/UsersList/UsersList';
-import {
-  BackLink,
-  TweetsContainer,
-} from './tweetsPage.styled';
+import { BackLink, TweetsContainer } from './tweetsPage.styled';
 
 const Tweets = () => {
   const location = useLocation();

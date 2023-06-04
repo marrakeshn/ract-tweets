@@ -5,6 +5,7 @@ import { store } from './redux/store';
 import { App } from 'components/App';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
+import "modern-normalize";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

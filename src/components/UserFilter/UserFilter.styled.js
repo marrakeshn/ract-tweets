@@ -48,7 +48,7 @@ export const Content = styled.a`
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  font-family: Montserrat,sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 16px;
   font-weight: 200;
 

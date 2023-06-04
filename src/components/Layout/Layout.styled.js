@@ -23,12 +23,13 @@ export const Nav = styled.nav`
 `;
 
 export const StyledLink = styled(NavLink)`
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   text-decoration: none;
   color: #fff;
+
   &.active {
     color: #ffc318;
   }

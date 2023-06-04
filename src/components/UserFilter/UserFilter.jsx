@@ -11,18 +11,18 @@ const FILTER_MAP = {
 
 const getFilterLabel = (filterValue) => {
   if (filterValue === true) {
-    return 'Followed'
+    return 'Followed';
   } else if (filterValue === false) {
-    return 'Unfollowed'
+    return 'Unfollowed';
   }
 
-  return 'All'
-}
+  return 'All';
+};
 
 const UserFilter = () => {
   const dispatch = useDispatch();
   const [isOpened, setIsOpened] = useState(false);
-  const isFollowedFilterValue = useSelector((state) => state.users.isFollowedFilter)
+  const isFollowedFilterValue = useSelector((state) => state.users.isFollowedFilter);
 
   const handleFilterChange = (filterValue) => {
     dispatch(fetchFilteredUsers({ page: 1, isFollowed: FILTER_MAP[filterValue] }));

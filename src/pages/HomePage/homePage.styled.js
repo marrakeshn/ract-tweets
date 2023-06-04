@@ -9,7 +9,7 @@ export const HomeContainer = styled.div`
 `;
 
 export const HeroTitle = styled.h1`
-  font-family: Montserrat,sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 38px;
   font-weight: 900;
   color: #5736A3;

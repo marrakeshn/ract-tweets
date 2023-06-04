@@ -8,22 +8,21 @@ const Home = lazy(() => import('../pages/HomePage/homePage'));
 const Tweets = lazy(() => import('../pages/TweetsPage/tweetsPage'));
 
 
-
 export const App = () => {
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.users.page)
+  const page = useSelector((state) => state.users.page);
 
   useEffect(() => {
-    dispatch(fetchUsers({ page }))
+    dispatch(fetchUsers({ page }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="tweets" element={<Tweets />} />
-        <Route path="*" element={<Home />} />
+        <Route path='tweets' element={<Tweets />} />
+        <Route path='*' element={<Home />} />
       </Route>
     </Routes>
   );

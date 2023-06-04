@@ -1,18 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {Notify} from 'notiflix';
+import { Notify } from 'notiflix';
 
 axios.defaults.baseURL = 'https://646fdeaf3de51400f723b07b.mockapi.io';
 export const LIMIT = 3;
 
 const searchParams = new URLSearchParams({
   limit: LIMIT,
-})
+});
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers',
   async ({ page = 1 }, thunkAPI) => {
-    searchParams.set('page', page)
+    searchParams.set('page', page);
 
     try {
       const response = await axios.get(`/users?${searchParams}`);
@@ -23,17 +23,17 @@ export const fetchUsers = createAsyncThunk(
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const fetchFilteredUsers = createAsyncThunk(
   'users/fetchFilteredUsers',
   async ({ page, isFollowed }, thunkAPI) => {
-    searchParams.set('page', page)
+    searchParams.set('page', page);
     searchParams.set('isFollowed', isFollowed);
 
     if (isFollowed === undefined) {
-      searchParams.delete('isFollowed')
+      searchParams.delete('isFollowed');
     }
 
     try {
@@ -45,12 +45,12 @@ export const fetchFilteredUsers = createAsyncThunk(
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const updateUser = createAsyncThunk(
   'users/updateUser',
-  async ({ id, followers, isFollowed } , thunkAPI) => {
+  async ({ id, followers, isFollowed }, thunkAPI) => {
     try {
       const response = await axios.put(`/users/${id}`, { followers, isFollowed });
       if (!response) {
@@ -60,5 +60,5 @@ export const updateUser = createAsyncThunk(
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
 );
