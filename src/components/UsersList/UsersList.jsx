@@ -14,6 +14,7 @@ export const UsersList = () => {
 
   useEffect(() => {
     dispatch(fetchUsers({ page }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleLoadMore = () => {
