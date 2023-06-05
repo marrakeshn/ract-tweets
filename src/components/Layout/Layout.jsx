@@ -11,7 +11,7 @@ function Copyright() {
   return (
     <Typography variant="body2" align="center" padding="20px 10px">
       {'Copyright © '}
-      <Link color="inherit" href="https://github.com/marrakeshn?tab=repositories/">
+      <Link color="inherit" href="https://github.com/marrakeshn?tab=repositories/" target="blank">
         marrakeshn GitHub repo
       </Link>{' '}
       {new Date().getFullYear()}
