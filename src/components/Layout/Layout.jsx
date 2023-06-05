@@ -2,8 +2,23 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 import logoMain from '../../images/favicon.ico';
-
 import { Header, LoaderContainer, Nav, StyledLink } from './Layout.styled';
+import { Typography } from '@mui/material';
+import Link from '@mui/material/Link';
+
+
+function Copyright() {
+  return (
+    <Typography variant="body2" align="center" padding="20px 10px">
+      {'Copyright © '}
+      <Link color="inherit" href="https://github.com/marrakeshn?tab=repositories/">
+        marrakeshn GitHub repo
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const Layout = () => {
   return (
@@ -33,6 +48,7 @@ const Layout = () => {
       >
         <Outlet />
       </Suspense>
+      <Copyright />
     </div>
   );
 };
